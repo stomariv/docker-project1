@@ -58,10 +58,10 @@ jobs:
 
         
       - uses: google-github-actions/setup-gcloud@master
-            with:
-              service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
-              project_id: ${{ env.PROJECT_ID }}
-              export_default_credentials: true
+          with:
+            service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+            project_id: ${{ env.PROJECT_ID }}
+            export_default_credentials: true
 
     # - id: 'auth'
     #   name: 'Authenticate to Google Cloud'
