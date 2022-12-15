@@ -40,19 +40,19 @@ jobs:
         working-directory: ${{ env.app_name }}
         run: |
           git checkout ${{ env.app_version }}
-      # Runs a set of commands using the runners shell
-      - name: Remove Old Images
-        working-directory: ${{ env.app_name }}
-        run: |
-          docker image prune -af
+      # # Runs a set of commands using the runners shell
+      # - name: Remove Old Images
+      #   working-directory: ${{ env.app_name }}
+      #   run: |
+      #     docker image prune -af
 
 
 
       # # Runs a set of commands using the runners shell
-      # - name: Image Build
-      #   working-directory: ${{ env.app_name }}
-      #   run: |
-      #     docker image build -t ${{ artifact_registry_path }}/${{ env.app_name }}:${{ env.app_version }}   .
+      - name: Image Build
+        working-directory: ${{ env.app_name }}
+        run: |
+          docker image build -t ${{ artifact_registry_path }}/${{ env.app_name }}:${{ env.app_version }}   .
          
     
 
