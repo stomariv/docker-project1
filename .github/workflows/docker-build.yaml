@@ -52,7 +52,7 @@ jobs:
       - name: Image Build
         working-directory: ${{ env.app_name }}
         run: |
-          docker image build -t ${{ artifact_registry_path }}/${{ env.app_name }}:${{ env.app_version }}   .
+          docker image build -t ${{ env.artifact_registry_path }}/${{ env.app_name }}:${{ env.app_version }}   .
          
     
 
