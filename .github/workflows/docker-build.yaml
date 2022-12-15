@@ -56,19 +56,13 @@ jobs:
         run: |
           docker image build -t ${{ env.artifact_registry_path }}/${{ env.app_name }}:${{ env.app_version }}   .
 
-        
-      - uses: google-github-actions/setup-gcloud@master
-        with:
-          service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
-          project_id: ${{ env.PROJECT_ID }}
-          export_default_credentials: true
 
-    # - id: 'auth'
-    #   name: 'Authenticate to Google Cloud'
-    #   uses: 'google-github-actions/auth@v0.6.0'
-    #   with:
-    #     credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
-    #     token_format: 'access_token'
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v0.6.0'
+        with:
+          credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+          token_format: 'access_token'
 
     # - uses: 'docker/login-action@v1'
     #   name: 'Docker login'
@@ -77,6 +71,11 @@ jobs:
     #     username: 'oauth2accesstoken'
     #     password: '${{ steps.auth.outputs.access_token }}'
          
-      
+            
+      # - uses: google-github-actions/setup-gcloud@master
+      #   with:
+      #     service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+      #     project_id: ${{ env.PROJECT_ID }}
+      #     export_default_credentials: true
 
 
