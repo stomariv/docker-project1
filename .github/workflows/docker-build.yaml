@@ -4,6 +4,8 @@ env:
   app_name: "artemis"
   tag_new_version: "latest"
   artifact_registry_path: "us-central1-docker.pkg.dev/terraform-project-helmapp/artemis"
+  PROJECT_ID: "terraform-project-helmapp"
+
 
 name: ContinuousDelivery
 # Controls when the workflow will run
@@ -53,6 +55,13 @@ jobs:
         working-directory: ${{ env.app_name }}
         run: |
           docker image build -t ${{ env.artifact_registry_path }}/${{ env.app_name }}:${{ env.app_version }}   .
+
+        
+      - uses: google-github-actions/setup-gcloud@master
+            with:
+              service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
+              project_id: ${{ env.PROJECT_ID }}
+              export_default_credentials: true
 
     # - id: 'auth'
     #   name: 'Authenticate to Google Cloud'
